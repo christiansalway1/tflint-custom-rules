@@ -88,4 +88,5 @@ gpg -K --keyid-format SHORT
 
 export GPG_FINGERPRINT="{FINGERPRINT}"
 
+goreleaser release
 ```
