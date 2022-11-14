@@ -9,8 +9,8 @@ import (
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
 )
 
-// AwsIAMRoleInvalidNameRule2 checks the pattern is valid
-type AwsIAMRoleInvalidNameRule2 struct {
+// AwsIAMRoleInvalidNameRule checks the pattern is valid
+type AwsIAMRoleInvalidNameRule struct {
 	tflint.DefaultRule
 
 	resourceType  string
@@ -20,9 +20,9 @@ type AwsIAMRoleInvalidNameRule2 struct {
 	pattern       *regexp.Regexp
 }
 
-// NewAwsIAMRoleInvalidNameRule2 returns new rule with default attributes
-func NewAwsIAMRoleInvalidNameRule2() *AwsIAMRoleInvalidNameRule2 {
-	return &AwsIAMRoleInvalidNameRule2{
+// NewAwsIAMRoleInvalidNameRule returns new rule with default attributes
+func NewAwsIAMRoleInvalidNameRule() *AwsIAMRoleInvalidNameRule {
+	return &AwsIAMRoleInvalidNameRule{
 		resourceType:  "aws_iam_role",
 		attributeName: "name",
 		max:           20,
@@ -32,27 +32,27 @@ func NewAwsIAMRoleInvalidNameRule2() *AwsIAMRoleInvalidNameRule2 {
 }
 
 // Name returns the rule name
-func (r *AwsIAMRoleInvalidNameRule2) Name() string {
-	return "aws_iam_role_invalid_name2"
+func (r *AwsIAMRoleInvalidNameRule) Name() string {
+	return "aws_iam_role_invalid_name_custom"
 }
 
 // Enabled returns whether the rule is enabled by default
-func (r *AwsIAMRoleInvalidNameRule2) Enabled() bool {
+func (r *AwsIAMRoleInvalidNameRule) Enabled() bool {
 	return true
 }
 
 // Severity returns the rule severity
-func (r *AwsIAMRoleInvalidNameRule2) Severity() tflint.Severity {
+func (r *AwsIAMRoleInvalidNameRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
 // Link returns the rule reference link
-func (r *AwsIAMRoleInvalidNameRule2) Link() string {
+func (r *AwsIAMRoleInvalidNameRule) Link() string {
 	return ""
 }
 
 // Check checks the pattern is valid
-func (r *AwsIAMRoleInvalidNameRule2) Check(runner tflint.Runner) error {
+func (r *AwsIAMRoleInvalidNameRule) Check(runner tflint.Runner) error {
 	logger.Trace("Check `%s` rule", r.Name())
 
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{

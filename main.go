@@ -12,7 +12,7 @@ func main() {
 			Name:    "custom",
 			Version: "0.1.0",
 			Rules: []tflint.Rule{
-				rules.NewAwsIAMRoleInvalidNameRule2(),
+				rules.NewAwsIAMRoleInvalidNameRule(),
 			},
 		},
 	})
