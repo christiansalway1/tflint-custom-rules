@@ -1,12 +1,4 @@
 # TFLint Ruleset Template
-[![Build Status](https://github.com/terraform-linters/tflint-ruleset-template/workflows/build/badge.svg?branch=main)](https://github.com/terraform-linters/tflint-ruleset-template/actions)
-
-This is a template repository for building a custom ruleset. You can create a plugin repository from "Use this template". See also [Writing Plugins](https://github.com/terraform-linters/tflint/blob/master/docs/developer-guide/plugins.md).
-
-## Requirements
-
-- TFLint v0.40+
-- Go v1.19
 
 ## Installation
 
@@ -29,40 +21,6 @@ plugin "template" {
   ...
   KEY
 }
-```
-
-## Rules
-
-|Name|Description|Severity|Enabled|Link|
-| --- | --- | --- | --- | --- |
-|aws_instance_example_type|Example rule for accessing and evaluating top-level attributes|ERROR|✔||
-|aws_s3_bucket_example_lifecycle_rule|Example rule for accessing top-level/nested blocks and attributes under the blocks|ERROR|✔||
-|google_compute_ssl_policy|Example rule with a custom rule config|WARNING|✔||
-|terraform_backend_type|Example rule for accessing other than resources|ERROR|✔||
-
-## Building the plugin
-
-Clone the repository locally and run the following command:
-
-```
-$ make
-```
-
-You can easily install the built plugin with the following:
-
-```
-$ make install
-```
-
-You can run the built plugin like the following:
-
-```
-$ cat << EOS > .tflint.hcl
-plugin "template" {
-  enabled = true
-}
-EOS
-$ tflint
 ```
 
 ## Releasing
@@ -89,4 +47,18 @@ gpg -K --keyid-format SHORT
 export GPG_FINGERPRINT="{FINGERPRINT}"
 
 goreleaser release
+```
+
+## Usage
+
+Create a `.tflint.hcl` file in the root of your repository with the following contents:
+
+```text
+plugin "template" {
+  enabled = true
+
+  version = "1.0.2"
+  source = "github.com/christiansalway1/tflint-ruleset-template"
+
+}
 ```
